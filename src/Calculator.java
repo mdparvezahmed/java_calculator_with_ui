@@ -39,6 +39,14 @@ public class Calculator {
     double result;
     String operation;
 
+
+    private void showing(){
+        DecimalFormat df = new DecimalFormat("#.######");
+        String res = df.format(result);
+        display.setText(display.getText()+display2.getText()+"=");
+        display2.setText(res);
+    }
+
     public Calculator() {
 
 
@@ -47,11 +55,25 @@ public class Calculator {
             public void actionPerformed(ActionEvent e) {
                 secondNumber = Double.parseDouble(display2.getText());
                 calculate();
-                DecimalFormat df = new DecimalFormat("#.######");
-                String res = df.format(result);
-                display.setText(display.getText()+display2.getText()+"=");
-                display2.setText(res);
+                showing();
+
             }
+        });
+        plus.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(!display.getText().isEmpty()){
+                    secondNumber = Double.parseDouble(display2.getText());
+                    calculate();
+                    showing();
+
+                }
+                    firstNumber = Double.parseDouble(display2.getText());
+                    operation = "+";
+                    display.setText(display2.getText()+"+");
+                    display2.setText("");
+
+                }
         });
         two.addActionListener(new ActionListener() {
             @Override
@@ -66,16 +88,7 @@ public class Calculator {
 
             }
         });
-        plus.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                firstNumber = Double.parseDouble(display2.getText());
-                operation = "+";
-                display.setText(display2.getText()+"+");
-                display2.setText("");
 
-            }
-        });
         three.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -85,6 +98,12 @@ public class Calculator {
         minus.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(!display.getText().isEmpty()){
+                    secondNumber = Double.parseDouble(display2.getText());
+                    calculate();
+                    showing();
+
+                }
                 firstNumber = Double.parseDouble(display2.getText());
                 operation = "-";
                 display.setText(display2.getText()+"-");
@@ -130,6 +149,12 @@ public class Calculator {
         multiplication.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(!display.getText().isEmpty()){
+                    secondNumber = Double.parseDouble(display2.getText());
+                    calculate();
+                    showing();
+
+                }
                 firstNumber = Double.parseDouble(display2.getText());
                 operation = "*";
                 display.setText(display2.getText()+"*");
@@ -145,6 +170,12 @@ public class Calculator {
         percent.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(!display.getText().isEmpty()){
+                    secondNumber = Double.parseDouble(display2.getText());
+                    calculate();
+                    showing();
+
+                }
                 firstNumber = Double.parseDouble(display2.getText());
                 firstNumber = firstNumber/100;
                 display2.setText(String.valueOf(firstNumber));
@@ -154,6 +185,12 @@ public class Calculator {
         devide.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(!display.getText().isEmpty()){
+                    secondNumber = Double.parseDouble(display2.getText());
+                    calculate();
+                    showing();
+
+                }
                 firstNumber = Double.parseDouble(display2.getText());
                 operation = "/";
                 display.setText(display2.getText()+"/");
